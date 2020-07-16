@@ -1,8 +1,6 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -10,6 +8,12 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
       backgroundColor: '#D1BCBC',
       position: 'relative',
+      [theme.breakpoints.down('xl')]: {
+        minHeight: '52rem',
+      },
+      [theme.breakpoints.down('xs')]: {
+        minHeight: '32rem',
+      },
     },
     landingTopName: {
       display: 'block',
@@ -120,6 +124,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontFamily: 'Gilroy, sans-serif',
       fontWeight: 'bold',
       color: 'rgb(47, 54, 118, 1)',
+      paddingBottom: '3rem',
       [theme.breakpoints.down(960)]: {
         padding: '0.8rem',
         textAlign: 'center',
