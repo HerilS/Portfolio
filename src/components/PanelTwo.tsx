@@ -34,10 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: '4rem',
       [theme.breakpoints.down(1285)]: {
         paddingLeft: '2rem',
-        },
-        [theme.breakpoints.down(600)]: {
-            fontSize: '3rem',
-          },
+      },
+      [theme.breakpoints.down(600)]: {
+        fontSize: '3rem',
+      },
     },
     paragraph: {
       fontFamily: 'Gilroy, sans-serif',
@@ -51,11 +51,11 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       [theme.breakpoints.down(928)]: {
         paddingRight: '2rem',
-        },
-        [theme.breakpoints.down(600)]: {
-            fontSize: '1.5rem',
-            paddingBottom: '1.2rem',
-          },
+      },
+      [theme.breakpoints.down(600)]: {
+        fontSize: '1.5rem',
+        paddingBottom: '1.2rem',
+      },
     },
     image: {
       paddingLeft: '2rem',
