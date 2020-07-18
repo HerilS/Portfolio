@@ -6,6 +6,7 @@ import PanelTwo from './components/PanelTwo';
 import PanelThree from './components/PanelThree';
 import PanelFour from './components/PanelFour';
 import PanelFive from './components/PanelFive';
+import PanelSix from './components/PanelSix';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
     <PanelThree />
     <PanelFour />
     <PanelFive />
+    <PanelSix />
   </React.StrictMode>,
   document.getElementById('root'),
 );

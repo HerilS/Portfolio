@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 'bold',
       color: 'white',
       padding: '1.5rem',
+      fontSize: '1.5rem',
       [theme.breakpoints.down(1084)]: {
         display: 'none',
       },

@@ -1,0 +1,38 @@
+[
+    {
+        "number": "01",
+        "title": "Wireframing",
+        "paragraph": "When I start a new website project, I first draw out and plan all the pages of the website on paper.",
+        "img": "img/CreationProcess/01.svg"
+    },
+    {
+        "number": "02",
+        "title": "Designing",
+        "paragraph": "After wireframing, I begin designing an initial design in Figma.",
+        "img": "img/CreationProcess/02.svg"
+    },
+    {
+        "number": "03",
+        "title": "Prototyping",
+        "paragraph": "When I’m finished creating my initial design in Figma, I begin prototyping with micro interactions and page animations.",
+        "img": "img/CreationProcess/03.svg"
+    },
+    {
+        "number": "04",
+        "title": "Programming",
+        "paragraph": "Programming the website is the longest part, in this stage, I manage code, add features, and work effectively.",
+        "img": "img/CreationProcess/04.svg"
+    },
+    {
+        "number": "05",
+        "title": "Assessment",
+        "paragraph": "After Programming, I test for bugs, check issues with connecting to a database, and try and optimize speed.",
+        "img": "img/CreationProcess/05.svg"
+    },
+    {
+        "number": "06",
+        "title": "Deploying",
+        "paragraph": "The last stage of my creation process, I migrate my code to a hosting site or VPS and watch as the website goes online.",
+        "img": "img/CreationProcess/06.svg"
+    }
+]

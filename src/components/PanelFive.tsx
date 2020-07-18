@@ -1,6 +1,5 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import classes from '*.module.css';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -148,7 +147,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     smallImage2: {
       width: '85%',
-      
     },
     leaf: {
       position: 'absolute',
@@ -159,11 +157,11 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg) scaleX(-1)',
       [theme.breakpoints.down(996)]: {
         width: '8rem',
-      paddingLeft: '2rem',
+        paddingLeft: '2rem',
       },
       [theme.breakpoints.down(667)]: {
         width: '6rem',
-      paddingLeft: '2rem',
+        paddingLeft: '2rem',
       },
     },
   }),
