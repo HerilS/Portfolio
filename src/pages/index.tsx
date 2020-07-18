@@ -1,4 +1,5 @@
 import React from 'react';
+import '../index.css'
 import PanelOne from '../components/PanelOne';
 import PanelTwo from '../components/PanelTwo';
 import PanelThree from '../components/PanelThree';

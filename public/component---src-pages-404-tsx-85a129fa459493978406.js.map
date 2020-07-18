@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/404.tsx"],"names":[],"mappings":"6FAAA,gCAEe,qBACX,OACI","file":"component---src-pages-404-tsx-85a129fa459493978406.js","sourcesContent":["import React from 'react'\n\nexport default () => {\n    return (\n        <h1>nope!</h1>\n    )\n}"],"sourceRoot":""}
