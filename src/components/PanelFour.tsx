@@ -59,8 +59,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     image: {
       paddingLeft: '1rem',
-        width: '20rem',
-        marginBottom: 'auto',
+      width: '20rem',
+      marginBottom: 'auto',
       [theme.breakpoints.down(1285)]: {
         display: 'none',
       },
@@ -68,11 +68,11 @@ const useStyles = makeStyles((theme: Theme) =>
     image2: {
       paddingRight: '2rem',
       width: '10rem',
+      marginTop: 'auto',
+      [theme.breakpoints.down(1285)]: {
         marginTop: 'auto',
-        [theme.breakpoints.down(1285)]: {
-            marginTop: 'auto',
-            width: '16rem',
-          },
+        width: '16rem',
+      },
       [theme.breakpoints.down(928)]: {
         display: 'none',
       },

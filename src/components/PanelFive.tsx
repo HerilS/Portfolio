@@ -54,13 +54,13 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down('xs')]: {
         fontSize: '2rem',
         textAlign: 'left',
-        paddingLeft: '1.5rem',
+        paddingLeft: '2.5rem',
       },
     },
     planningStrategistItem: {
       color: '#2F3676',
       fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'lighter',
+      fontWeight: 'normal',
       fontSize: '1.7rem',
       paddingBottom: '1.35rem',
       [theme.breakpoints.down(1138)]: {
@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) =>
     YALItem: {
       color: '#2F3676',
       fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'lighter',
+      fontWeight: 'normal',
       fontSize: '1.7rem',
       paddingBottom: '1.35rem',
       [theme.breakpoints.down(1138)]: {

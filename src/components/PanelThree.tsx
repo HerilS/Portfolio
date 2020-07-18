@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     skillList: {
       fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'lighter',
+      fontWeight: 'normal',
       color: '#2F3676',
       fontSize: '2rem',
     },

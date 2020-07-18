@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
     landingTopName: {
       display: 'block',
       fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'bold',
+      fontWeight: 'bolder',
       color: 'white',
       padding: '1.5rem',
       fontSize: '1.5rem',
