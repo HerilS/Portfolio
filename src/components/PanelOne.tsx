@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '1.5rem',
       [theme.breakpoints.down(1084)]: {
         display: 'none',
-      }
+      },
     },
     homeImageContainer: {
       display: 'inline',
@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: 'auto',
         marginRight: 'auto',
       },
-
- 
-       
 
       [theme.breakpoints.down('xs')]: {
         width: '19rem',
@@ -79,7 +76,6 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'block',
         textAlign: 'center',
         padding: 0,
-        
       },
     },
     landingTopNameContainer: {
@@ -152,13 +148,13 @@ const App = () => {
   return (
     <div className={classes.landing}>
       <div className={classes.homeLogoContainer}>
-        <a href="https://github.com/HerilS">
+        <a href="https://github.com/HerilS" target="_blank" rel="noopener noreferrer">
           <img src="img/Icons/github.svg" alt="Github" className={classes.homeLogo} />
         </a>
-        <a href="https://www.instagram.com/herilsaha">
+        <a href="https://www.instagram.com/herilsaha" target="_blank" rel="noopener noreferrer">
           <img src="img/Icons/instagram.svg" alt="Instagram" className={classes.homeLogo} />
         </a>
-        <a href="https://ca.linkedin.com/in/herilsaha">
+        <a href="https://ca.linkedin.com/in/herilsaha" target="_blank" rel="noopener noreferrer">
           <img src="img/Icons/linkedin.svg" alt="LinkedIn" className={classes.homeLogo} />
         </a>
       </div>
