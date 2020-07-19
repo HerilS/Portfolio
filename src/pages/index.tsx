@@ -7,7 +7,7 @@ import PanelFour from '../components/PanelFour';
 import PanelFive from '../components/PanelFive';
 import PanelSix from '../components/PanelSix';
 import PanelSeven from '../components/PanelSeven';
-
+import PanelEight from '../components/PanelEight';
 export default () => (
   <React.Fragment>
     <PanelOne />
@@ -17,5 +17,6 @@ export default () => (
     <PanelFive />
     <PanelSix />
     <PanelSeven />
+    <PanelEight />
   </React.Fragment>
 );
