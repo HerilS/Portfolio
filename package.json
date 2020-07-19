@@ -9,16 +9,18 @@
     "@types/node": "^12.12.50",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
+    "@types/react-material-ui-form-validator": "^2.0.5",
     "gatsby": "^2.24.4",
     "gatsby-plugin-manifest": "^2.4.18",
     "gatsby-plugin-material-ui": "^2.1.9",
-    "gatsby-plugin-offline": "^3.2.18",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-material-ui-form-validator": "^2.0.10",
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "start": "gatsby develop -p 3333 -o",
+    "start": "gatsby develop",
     "build": "gatsby build"
   },
   "eslintConfig": {

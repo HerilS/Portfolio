@@ -162,6 +162,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down(667)]: {
         width: '6rem',
         paddingLeft: '2rem',
+        opacity: '0.7',
       },
     },
   }),

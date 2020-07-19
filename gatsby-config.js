@@ -5,12 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-offline`,
-      options: {
-        precachePages: [`/about-us/`, `/projects/*`],
-      },
-    },
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
