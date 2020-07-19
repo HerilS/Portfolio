@@ -4,6 +4,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { isError } from 'util';
+import { Element } from 'react-scroll'
+
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -161,7 +163,8 @@ export default function PanelSeven() {
     }
   };
   return (
-    <div className={classes.root}>
+    <Element name="Contact">
+      <div className={classes.root}>
       <img src="img/Leaves/WhiteLeaves.svg" className={classes.whiteLeaf} />
       <div className={classes.title}>
         <span>Contact</span>
@@ -231,5 +234,8 @@ export default function PanelSeven() {
         <img src="img/Illustrations/contact.svg" className={classes.image} />
       </div>
     </div>
+    </Element>
+
+    
   );
 }

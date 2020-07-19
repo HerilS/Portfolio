@@ -1,6 +1,8 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { animateScroll as scroll, scroller } from 'react-scroll';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     landing: {
@@ -144,6 +146,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const App = () => {
+  var Scroll = require('react-scroll');
+  var scroll = Scroll.animateScroll;
+  const sendMessage = () => {
+    scroller.scrollTo('Contact', {
+      duration: 1500,
+      delay: 100,
+      smooth: true,
+    });
+  };
   const classes = useStyles();
   return (
     <div className={classes.landing}>
@@ -173,7 +184,7 @@ const App = () => {
               Heril Saha.
             </span>
           </div>
-          <Button variant="contained" className={classes.homeButton}>
+          <Button variant="contained" className={classes.homeButton} onClick={sendMessage}>
             Send Message
           </Button>
         </div>
