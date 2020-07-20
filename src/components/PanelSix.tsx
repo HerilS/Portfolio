@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import data from './creationProcess.json';
 import Grid from '@material-ui/core/Grid';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -8,6 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 interface Data {
   number: string;
@@ -73,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
     creationContainer: {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr',
-      
+
       paddingRight: '3rem',
       paddingLeft: '3rem',
       [theme.breakpoints.down('xs')]: {
@@ -122,25 +124,63 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PanelSix() {
   const classes = useStyles();
+
+  const sectionRef5 = useRef(null);
+
+  const intersection = useIntersection(sectionRef5, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -0,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.3
+      ? // Not Reached
+        fadeOut('.fadeIn5')
+      : fadeIn('.fadeIn5');
+  }, [intersection]);
+
   return (
-    <div className={classes.creationBody}>
+    <div ref={sectionRef5} className={classes.creationBody}>
       <img src="img/Leaves/LeafCollection1.svg" className={classes.leaf} />
       <div className={classes.title}>
-        <span>My Creation Process</span>
+        <span>
+          <div className="fadeIn5">My Creation Process</div>
+        </span>
       </div>
 
       <div className={classes.creationContainer}>
         {data.map((data: Data) => {
           return (
-            <div className={classes.card}>
-              <div>
-                <img src={data.img} className={classes.image} />
+            <div className="fadeIn5">
+              <div className={classes.card}>
+                <div>
+                  <img src={data.img} className={classes.image} />
+                </div>
+                <div>
+                  <span className={classes.itemNumber}>{data.number}</span>
+                  <span className={classes.itemTitle}>{data.title}</span>
+                </div>
+                <div className={classes.itemParagraph}>{data.paragraph}</div>
               </div>
-              <div>
-                <span className={classes.itemNumber}>{data.number}</span>
-                <span className={classes.itemTitle}>{data.title}</span>
-              </div>
-              <div className={classes.itemParagraph}>{data.paragraph}</div>
             </div>
           );
         })}

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,8 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     text: {
       textAlign: 'center',
-      paddingTop: '3rem',
-      paddingBottom: '3rem',
+      paddingTop: '8rem',
       [theme.breakpoints.down(1285)]: {
         textAlign: 'left',
       },
@@ -91,13 +92,50 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelFour() {
   const classes = useStyles();
+  const sectionRef3 = useRef(null);
+
+  const intersection = useIntersection(sectionRef3, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.8,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -80,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.8
+      ? // Not Reached
+        fadeOut('.fadeIn3')
+      : fadeIn('.fadeIn3');
+  }, [intersection]);
+
   return (
-    <div className={classes.body}>
+    <div ref={sectionRef3} className={classes.body}>
       <img src="/img/Extra/lamps.svg" className={classes.image} />
-      <div className={classes.text}>
-        <div className={classes.title}>Worked For Tax Mechanic</div>
+      <div  className={classes.text}>
+        <div className={classes.title}>
+          <div className="fadeIn3">Developed For Tax Mechanic</div>
+        </div>
         <div className={classes.paragraph}>
-          Managed, Designed, Planned, and Fully Developed a Website For a Tax Consultation Company.
+          <div className="fadeIn3">
+            Managed, Designed, Planned, and Fully Developed a Website For a Tax Consultation Company
+          </div>
         </div>
       </div>
       <img src="/img/Leaves/Plant.svg" className={classes.image2} />

@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import ScrollAnimation from 'react-animate-on-scroll';
+import Typist from 'react-typist';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,8 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     text: {
       textAlign: 'center',
-      paddingTop: '3rem',
-      paddingBottom: '3rem',
+      paddingTop: '8rem',
       [theme.breakpoints.down(1285)]: {
         textAlign: 'left',
       },
@@ -82,15 +85,53 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
 export default function PanelTwo() {
+  const sectionRef1 = useRef(null);
+
+  const intersection = useIntersection(sectionRef1, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.8,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -80,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.8
+      ? // Not Reached
+        fadeOut('.fadeIn')
+      : fadeIn('.fadeIn');
+  }, [intersection]);
+
   const classes = useStyles();
   return (
-    <div className={classes.body}>
+    <div ref={sectionRef1} className={classes.body}>
       <img src="/img/Leaves/LeafCollection2.svg" className={classes.image} />
-      <div className={classes.text}>
-        <div className={classes.title}>Creator of Nixode</div>
+      <div  className={classes.text}>
+        <div className={classes.title}>
+          <div className="fadeIn">Creator of Nixode</div>
+        </div>
         <div className={classes.paragraph}>
-          A Website That Tracks Cryptocurrency Prices and Allows Advanced Comparisons Between Them.
+          <div className="fadeIn">
+            A Website That Tracks Cryptocurrency Prices and Allows Advanced Comparisons Between Them
+          </div>
         </div>
       </div>
       <img src="/img/Leaves/LeafCollection1.svg" className={classes.image2} />

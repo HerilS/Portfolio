@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -169,68 +171,131 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelFive() {
   const classes = useStyles();
+
+  const sectionRef4 = useRef(null);
+
+  const intersection = useIntersection(sectionRef4, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -0,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.3
+      ? // Not Reached
+        fadeOut('.fadeIn4')
+      : fadeIn('.fadeIn4');
+  }, [intersection]);
+
   return (
     <div className={classes.root}>
       <img src="img/Leaves/Leaf3.svg" className={classes.leaf} />
-      <div className={classes.paddingContainer}>
+      <div ref={sectionRef4} className={classes.paddingContainer}>
         <div className={classes.title}>
-          <span>City Youth Council</span>
+          <div className="fadeIn4">
+            <span>City Youth Council</span>
+          </div>
         </div>
         <div className={classes.planningStrategist}>
           <div className={classes.planningStrategistTitle}>
-            <span>Planning Strategist</span>
+            <div className="fadeIn4">
+              <span>Planning Strategist</span>
+            </div>
           </div>
           <ul className={classes.planningStrategistList}>
-            <li className={classes.planningStrategistItem}>
-              Showed design flaws in the past City Youth Council website
-            </li>
-            <li className={classes.planningStrategistItem}>
-              Found the lack of accessibility on mobile devices and problems with search engine
-              optimization, and soon pushed for a redesign of City Youth Council's website
-            </li>
-            <li className={classes.planningStrategistItem}>
-              Created concept designs for the new website using Figma
-            </li>
-            <li className={classes.planningStrategistItem}>
-              City Youth Council website gets complete revision using a website builder, Wix,
-              instead of traditional methods because of complexity reasons
-            </li>
+            <div className="fadeIn4">
+              <li className={classes.planningStrategistItem}>
+                Showed design flaws in the past City Youth Council website
+              </li>
+            </div>
+            <div className="fadeIn4">
+              <li className={classes.planningStrategistItem}>
+                Found the lack of accessibility on mobile devices and problems with search engine
+                optimization, and soon pushed for a redesign of City Youth Council's website
+              </li>
+            </div>
+            <div className="fadeIn4">
+              <li className={classes.planningStrategistItem}>
+                Created concept designs for the new website using Figma
+              </li>
+            </div>
+            <div className="fadeIn4">
+              <li className={classes.planningStrategistItem}>
+                City Youth Council website gets complete revision using a website builder, Wix,
+                instead of traditional methods because of complexity reasons
+              </li>
+            </div>
           </ul>
         </div>
 
         <div className={classes.smallImage1Container}>
-          <img src="img/Illustrations/smallVar1.svg" className={classes.smallImage1} />
+          <div className="fadeIn4">
+            <img src="img/Illustrations/smallVar1.svg" className={classes.smallImage1} />
+          </div>
         </div>
 
         <div className={classes.YAL}>
           <div className={classes.YALTitle}>
-            <span>Youth-at-Large Member</span>
+            <div className="fadeIn4">
+              <span>Youth-at-Large Member</span>
+            </div>
           </div>
           <ul className={classes.YALList}>
-            <li className={classes.YALItem}>
-              Sat on Health and Wellness subcommittee to plan city wide events to tackle the mental
-              and physical issues in youth
-            </li>
-            <li className={classes.YALItem}>
-              Designed various posters for the Video Campaign Group to spread awareness to the
-              dangers of vaping products
-            </li>
-            <li className={classes.YALItem}>
-              Led social media for the Vaping Info Report Group to spread awareness to the dangers
-              of vaping products
-            </li>
-            <li className={classes.YALItem}>
-              Member of Content Creation Group which specializes in designing and planning info and
-              images to be released on social media
-            </li>
+            <div className="fadeIn4">
+              <li className={classes.YALItem}>
+                Sat on Health and Wellness subcommittee to plan city wide events to tackle the
+                mental and physical issues in youth
+              </li>
+            </div>
+
+            <div className="fadeIn4">
+              <li className={classes.YALItem}>
+                Designed various posters for the Video Campaign Group to spread awareness to the
+                dangers of vaping products
+              </li>
+            </div>
+            <div className="fadeIn4">
+              <li className={classes.YALItem}>
+                Led social media for the Vaping Info Report Group to spread awareness to the dangers
+                of vaping products
+              </li>
+            </div>
+            <div className="fadeIn4">
+              <li className={classes.YALItem}>
+                Member of Content Creation Group which specializes in designing and planning info
+                and images to be released on social media
+              </li>
+            </div>
           </ul>
         </div>
         <div className={classes.smallImage2Container}>
-          <img src="img/Illustrations/smallVar2.svg" className={classes.smallImage2} />
+          <div className="fadeIn4">
+            <img src="img/Illustrations/smallVar2.svg" className={classes.smallImage2} />
+          </div>
         </div>
 
         <div className={classes.imageContainer}>
-          <img src="img/Illustrations/Variations.svg" className={classes.bigImage} />
+          <div className="fadeIn4">
+            <img src="img/Illustrations/Variations.svg" className={classes.bigImage} />
+          </div>
         </div>
       </div>
     </div>

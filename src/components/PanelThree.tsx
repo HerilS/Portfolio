@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import DoneOutlineRoundedIcon from '@material-ui/icons/DoneOutlineRounded';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -8,12 +10,12 @@ const useStyles = makeStyles((theme: Theme) =>
       overflow: 'auto',
       backgroundColor: '#D1BCBC',
       display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          [theme.breakpoints.down(1265)]: {
-            paddingTop: '5rem',
-        },
-          [theme.breakpoints.down(927)]: {
-          paddingTop: 0,
+      gridTemplateColumns: '1fr 1fr',
+      [theme.breakpoints.down(1265)]: {
+        paddingTop: '5rem',
+      },
+      [theme.breakpoints.down(927)]: {
+        paddingTop: 0,
         gridTemplateColumns: '1fr',
         gridTemplateRows: '1fr, 1fr',
       },
@@ -62,45 +64,93 @@ const useStyles = makeStyles((theme: Theme) =>
         gridColumnStart: '1',
       },
     },
-      image: {
-        [theme.breakpoints.down(1265)]: {
-            width: '35rem',
-        },
+    image: {
+      [theme.breakpoints.down(1265)]: {
+        width: '35rem',
+      },
       [theme.breakpoints.down(580)]: {
         width: '20rem',
-        },
+      },
     },
   }),
 );
 export default function PanelThree() {
+  const sectionRef2 = useRef(null);
+
+  const intersection = useIntersection(sectionRef2, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -0,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.5
+      ? // Not Reached
+        fadeOut('.fadeIn2')
+      : fadeIn('.fadeIn2');
+  }, [intersection]);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div className={classes.skillBody}>
-        <span className={classes.title}>Skills</span>
+      <div ref={sectionRef2} className={classes.skillBody}>
+        <div className="fadeIn2">
+          <span className={classes.title}>Skills</span>
+        </div>
+
         <div className={classes.skillItemContainer}>
-          <DoneOutlineRoundedIcon className={classes.icon} />
-          <span className={classes.skillList}>ReactJS</span>
+          <div className="fadeIn2">
+            <DoneOutlineRoundedIcon className={classes.icon} />
+            <span className={classes.skillList}>ReactJS</span>
+          </div>
         </div>
         <div className={classes.skillItemContainer}>
-          <DoneOutlineRoundedIcon className={classes.icon} />
-          <span className={classes.skillList}>Material UI</span>
+          <div className="fadeIn2">
+            <DoneOutlineRoundedIcon className={classes.icon} />
+            <span className={classes.skillList}>Material UI</span>
+          </div>
         </div>
         <div className={classes.skillItemContainer}>
-          <DoneOutlineRoundedIcon className={classes.icon} />
-          <span className={classes.skillList}>MongoDB</span>
+          <div className="fadeIn2">
+            <DoneOutlineRoundedIcon className={classes.icon} />
+            <span className={classes.skillList}>MongoDB</span>
+          </div>
         </div>
         <div className={classes.skillItemContainer}>
-          <DoneOutlineRoundedIcon className={classes.icon} />
-          <span className={classes.skillList}>GraphQL</span>
+          <div className="fadeIn2">
+            <DoneOutlineRoundedIcon className={classes.icon} />
+            <span className={classes.skillList}>GraphQL</span>
+          </div>
         </div>
         <div className={classes.skillItemContainer}>
-          <DoneOutlineRoundedIcon className={classes.icon} />
-          <span className={classes.skillList}>UI/UX Design</span>
+          <div className="fadeIn2">
+            <DoneOutlineRoundedIcon className={classes.icon} />
+            <span className={classes.skillList}>UI/UX Design</span>
+          </div>
         </div>
       </div>
       <div className={classes.imageContainer}>
-        <img src="img/Illustrations/skills.svg" className={classes.image} />
+        <div className="fadeIn2">
+          <img src="img/Illustrations/skills.svg" className={classes.image} />
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { animateScroll as scroll, scroller } from 'react-scroll';
+import Typist from 'react-typist';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -155,6 +156,7 @@ const App = () => {
       smooth: true,
     });
   };
+  
   const classes = useStyles();
   return (
     <div className={classes.landing}>
@@ -178,11 +180,19 @@ const App = () => {
         </div>
         <div className={classes.homeTextContainer}>
           <div className={classes.homeText}>
-            <span>
+            <Typist
+              cursor={{
+                show: true,
+                blink: true,
+                element: '|',
+                hideWhenDone: true,
+                hideWhenDoneDelay: 10,
+              }}
+            >
               Hi, I'm
               <br />
               Heril Saha.
-            </span>
+            </Typist>
           </div>
           <Button variant="contained" className={classes.homeButton} onClick={sendMessage}>
             Send Message

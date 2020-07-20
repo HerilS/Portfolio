@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import DoneOutlineRoundedIcon from '@material-ui/icons/DoneOutlineRounded';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { isError } from 'util';
-import { Element } from 'react-scroll'
+import { Element } from 'react-scroll';
+import { useIntersection } from 'react-use';
+import gsap from 'gsap';
 
 import Button from '@material-ui/core/Button';
 
@@ -162,80 +163,125 @@ export default function PanelSeven() {
       setParagraphError('Required Field');
     }
   };
+
+  const sectionRef6 = useRef(null);
+
+  const intersection = useIntersection(sectionRef6, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+  });
+
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -0,
+        ease: 'power4.out',
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    };
+
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power4.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.3
+      ? // Not Reached
+        fadeOut('.fadeIn6')
+      : fadeIn('.fadeIn6');
+  }, [intersection]);
+
   return (
     <Element name="Contact">
-      <div className={classes.root}>
-      <img src="img/Leaves/WhiteLeaves.svg" className={classes.whiteLeaf} />
-      <div className={classes.title}>
-        <span>Contact</span>
-      </div>
-      <div className={classes.formContainer}>
-        <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-          <input type="hidden" name="bot-field" />
-          <TextField
-            InputProps={{
-              style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
-            }}
-            FormHelperTextProps={{
-              className: classes.helperText,
-            }}
-            className={classes.textField}
-            name="Name"
-            label="Name"
-            value={name}
-            onChange={onNameChange}
-            helperText={nameError}
-            error={isNameError}
-            variant="outlined"
-            color="secondary"
-          />
-          <TextField
-            InputProps={{
-              style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
-            }}
-            FormHelperTextProps={{
-              className: classes.helperText,
-            }}
-            className={classes.textField}
-            name="Email"
-            label="Email"
-            value={email}
-            onChange={onEmailChange}
-            helperText={emailError}
-            error={isEmailError}
-            variant="outlined"
-          />
-          <TextField
-            InputProps={{
-              style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
-            }}
-            FormHelperTextProps={{
-              className: classes.helperText,
-            }}
-            multiline
-            rows={10}
-            className={classes.textField}
-            name="Message"
-            label="Message"
-            value={paragraph}
-            onChange={onParagraphChange}
-            helperText={paragraphError}
-            error={isParagraphError}
-            variant="outlined"
-          />
-          <div>
-            <Button type="submit" className={classes.button} onClick={onSubmit}>
-              Submit
-            </Button>
-          </div>
-        </form>
-      </div>
-      <div className={classes.imageContainer}>
-        <img src="img/Illustrations/contact.svg" className={classes.image} />
-      </div>
-    </div>
-    </Element>
+      <div ref={sectionRef6} className={classes.root}>
+        <img src="img/Leaves/WhiteLeaves.svg" className={classes.whiteLeaf} />
+        <div className={classes.title}>
+          <span>
+            <div className="fadeIn6">Contact</div>
+          </span>
+        </div>
+        <div className={classes.formContainer}>
+          <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="bot-field" />
+            <div className="fadeIn6">
+              <TextField
+                InputProps={{
+                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                }}
+                FormHelperTextProps={{
+                  className: classes.helperText,
+                }}
+                className={classes.textField}
+                name="Name"
+                label="Name"
+                value={name}
+                onChange={onNameChange}
+                helperText={nameError}
+                error={isNameError}
+                variant="outlined"
+                color="secondary"
+              />
+            </div>
+            <div className="fadeIn6">
+              <TextField
+                InputProps={{
+                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                }}
+                FormHelperTextProps={{
+                  className: classes.helperText,
+                }}
+                className={classes.textField}
+                name="Email"
+                label="Email"
+                value={email}
+                onChange={onEmailChange}
+                helperText={emailError}
+                error={isEmailError}
+                variant="outlined"
+              />
+            </div>
+            <div className="fadeIn6">
+              <TextField
+                InputProps={{
+                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                }}
+                FormHelperTextProps={{
+                  className: classes.helperText,
+                }}
+                multiline
+                rows={10}
+                className={classes.textField}
+                name="Message"
+                label="Message"
+                value={paragraph}
+                onChange={onParagraphChange}
+                helperText={paragraphError}
+                error={isParagraphError}
+                variant="outlined"
+              />
+            </div>
 
-    
+            <div>
+              <div className="fadeIn6">
+                <Button type="submit" className={classes.button} onClick={onSubmit}>
+                  Submit
+                </Button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className={classes.imageContainer}>
+          <div className="fadeIn6">
+            <img src="img/Illustrations/contact.svg" className={classes.image} />
+          </div>
+        </div>
+      </div>
+    </Element>
   );
 }
