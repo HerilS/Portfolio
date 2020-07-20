@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme, createGenerateClassName } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
 import { gsap } from 'gsap';
 
@@ -88,6 +88,25 @@ const useStyles = makeStyles((theme: Theme) =>
         bottom: 0,
       },
     },
+    underline: {
+      color: '#2F3676',
+      display: 'inline-block',
+      lineHeight: '0rem',
+      paddingBottom: '1.9rem',
+      backgroundColor: '#89C5CC',
+      transition: 'all 0.2s ease',
+      '&:hover': {
+        backgroundColor: '#6DB1B9',
+        transition: 'all 0.2s ease',
+      },
+      [theme.breakpoints.down(600)]: {
+        paddingBottom: '1.4rem',
+      },
+    },
+    link: {
+      textDecoration: 'none',
+      color: '#2F3676',
+    },
   }),
 );
 export default function PanelFour() {
@@ -136,7 +155,12 @@ export default function PanelFour() {
       <div className={classes.text}>
         <div className={classes.title}>
           {/*Title*/}
-          <div className="fadeIn3">Developed For Tax Mechanic</div>
+          <div className="fadeIn3">
+            Developed For{' '}
+            <mark className={classes.underline}>
+              <a className={classes.link} href="https://www.taxmechanic.ca">Tax Mechanic</a>
+            </mark>
+          </div>
         </div>
         <div className={classes.paragraph}>
           <div className="fadeIn3">

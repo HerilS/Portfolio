@@ -81,6 +81,25 @@ const useStyles = makeStyles((theme: Theme) =>
         bottom: 0,
       },
     },
+    underline: {
+      color: '#2F3676',
+      display: 'inline-block',
+      lineHeight: '0rem',
+      paddingBottom: '1.9rem',
+      backgroundColor: '#89C5CC',
+      transition: 'all 0.2s ease',
+      '&:hover': {
+        backgroundColor: '#6DB1B9',
+        transition: 'all 0.2s ease'
+      },
+      [theme.breakpoints.down(600)]: {
+        paddingBottom: '1.4rem',
+      },
+    },
+    link: {
+      textDecoration: 'none',
+      color: '#2F3676',
+    },
   }),
 );
 
@@ -133,7 +152,9 @@ export default function PanelTwo() {
       <div ref={sectionRef1} className={classes.text}>
         <div className={classes.title}>
           {/*Title*/}
-          <div className="fadeIn1">Creator of Nixode</div>
+          <div className="fadeIn1">
+            Creator of <mark className={classes.underline}><a className={classes.link} href="https://www.nixode.com">Nixode</a></mark>
+          </div>
         </div>
         <div className={classes.paragraph}>
           <div className="fadeIn1">
