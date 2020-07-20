@@ -177,9 +177,9 @@ export default function PanelSeven() {
       gsap.to(element, 1, {
         opacity: 1,
         y: -0,
-        ease: 'power4.out',
+        ease: 'power3.out',
         stagger: {
-          amount: 0.3,
+          amount: 0,
         },
       });
     };
@@ -188,7 +188,7 @@ export default function PanelSeven() {
       gsap.to(element, 1, {
         opacity: 0,
         y: -20,
-        ease: 'power4.out',
+        ease: 'power3.out',
       });
     };
     intersection && intersection.intersectionRatio < 0.3

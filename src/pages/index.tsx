@@ -19,7 +19,6 @@ export default () => (
         name="description"
         content="Full Stack Developer and UX/UI Designer based in Alberta."
       />
-      <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     </Helmet>
     <PanelOne />
     <PanelTwo />

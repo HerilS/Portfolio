@@ -92,39 +92,37 @@ export default function PanelTwo() {
   const intersection = useIntersection(sectionRef1, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.8,
+    threshold: 1,
   });
 
-  useEffect(() => {
-    const fadeIn = (element: any) => {
-      gsap.to(element, 1, {
-        opacity: 1,
-        y: -80,
-        ease: 'power4.out',
-        stagger: {
-          amount: 0.3,
-        },
-      });
-    };
+  const fadeIn = (element: any) => {
+    gsap.to(element, 1, {
+      opacity: 1,
+      y: -80,
+      ease: 'power3.out',
+      stagger: {
+        amount: 0,
+      },
+    });
+  };
 
-    const fadeOut = (element: any) => {
-      gsap.to(element, 1, {
-        opacity: 0,
-        y: -20,
-        ease: 'power4.out',
-      });
-    };
-    intersection && intersection.intersectionRatio < 0.8
-      ? // Not Reached
-        fadeOut('.fadeIn')
-      : fadeIn('.fadeIn');
-  }, [intersection]);
+  const fadeOut = (element: any) => {
+    gsap.to(element, 1, {
+      opacity: 0,
+      y: -20,
+      ease: 'power3.out',
+    });
+  };
+  intersection && intersection.intersectionRatio < 1
+    ? // Not Reached
+      fadeOut('.fadeIn')
+    : fadeIn('.fadeIn');
 
   const classes = useStyles();
   return (
     <div ref={sectionRef1} className={classes.body}>
       <img src="/img/Leaves/LeafCollection2.svg" className={classes.image} />
-      <div  className={classes.text}>
+      <div className={classes.text}>
         <div className={classes.title}>
           <div className="fadeIn">Creator of Nixode</div>
         </div>
