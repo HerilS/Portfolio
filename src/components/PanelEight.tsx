@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelEight() {
   const classes = useStyles();
+
+  // Ref for intersection observer
   const sectionRef7 = useRef(null);
 
   const intersection = useIntersection(sectionRef7, {
@@ -45,6 +47,7 @@ export default function PanelEight() {
   });
 
   useEffect(() => {
+    // Fade in animation when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -56,6 +59,7 @@ export default function PanelEight() {
       });
     };
 
+    // Fade out animation when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -70,8 +74,10 @@ export default function PanelEight() {
   }, [intersection]);
 
   return (
+    // Defining Ref for intersection observer
     <div ref={sectionRef7} className={classes.root}>
       <div className={classes.iconContainer}>
+        {/*Social Media Icons*/}
         <div className="fadeIn7">
           <a href="https://github.com/HerilS" target="_blank" rel="noopener noreferrer">
             <img src="img/Icons/github.svg" alt="Github" className={classes.icons} />
@@ -90,6 +96,7 @@ export default function PanelEight() {
       </div>
       <div className="fadeIn7">
         <div className={classes.copyright}>
+          {/*Copy right Notice*/}
           <span>Copyright 2019-{new Date().getFullYear()} Heril Saha. All rights reserved.</span>
         </div>
       </div>

@@ -1,16 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import data from './creationProcess.json';
-import Grid from '@material-ui/core/Grid';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import { useIntersection } from 'react-use';
 import { gsap } from 'gsap';
 
+// Interface for JSON Data
 interface Data {
   number: string;
   title: string;
@@ -124,7 +118,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PanelSix() {
   const classes = useStyles();
-
+  // Ref for intersection observer
   const sectionRef5 = useRef(null);
 
   const intersection = useIntersection(sectionRef5, {
@@ -134,6 +128,7 @@ export default function PanelSix() {
   });
 
   useEffect(() => {
+    // Fade in animation when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -144,7 +139,8 @@ export default function PanelSix() {
         },
       });
     };
-
+    
+    // Fade out animation when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -159,10 +155,12 @@ export default function PanelSix() {
   }, [intersection]);
 
   return (
+    //Definined Ref for intersection observer
     <div ref={sectionRef5} className={classes.creationBody}>
-      <img src="img/Leaves/LeafCollection1.svg" className={classes.leaf} />
+      <img src="img/Leaves/LeafCollection1.svg" alt="Leaves" className={classes.leaf} />
       <div className={classes.title}>
         <span>
+          {/*Title*/}
           <div className="fadeIn5">My Creation Process</div>
         </span>
       </div>
@@ -173,12 +171,15 @@ export default function PanelSix() {
             <div className="fadeIn5">
               <div className={classes.card}>
                 <div>
-                  <img src={data.img} className={classes.image} />
+                  {/*Mapping Images*/}
+                  <img src={data.img} alt="Card" className={classes.image} />
                 </div>
                 <div>
+                  {/*Mapping Numbers and Card Titles*/}
                   <span className={classes.itemNumber}>{data.number}</span>
                   <span className={classes.itemTitle}>{data.title}</span>
                 </div>
+                {/*Mapping Card Paragraph*/}
                 <div className={classes.itemParagraph}>{data.paragraph}</div>
               </div>
             </div>

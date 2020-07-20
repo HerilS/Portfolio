@@ -91,12 +91,13 @@ export default () => {
 
   return (
     <div className={classes.root}>
-      <img src="/img/Leaves/WhiteLeaves.svg" className={classes.img1} />
-      <img src="/img/Leaves/LeafCollection2.svg" className={classes.img2} />
-      <img src="/img/Leaves/LeafCollection1.svg" className={classes.img3} />
-      <img src="/img/Leaves/Leaf3.svg" className={classes.img4} />
+      <img src="/img/Leaves/WhiteLeaves.svg" alt="Leaf" className={classes.img1} />
+      <img src="/img/Leaves/LeafCollection2.svg" alt="Leaf" className={classes.img2} />
+      <img src="/img/Leaves/LeafCollection1.svg" alt="Leaf" className={classes.img3} />
+      <img src="/img/Leaves/Leaf3.svg" alt="Leaf" className={classes.img4} />
       <div className={classes.text}>
         <div>
+          {/*Typing animation*/}
           <Typist
             cursor={{
               show: true,
@@ -126,13 +127,14 @@ export default () => {
       </div>
 
       <div className={classes.buttonContainer}>
+        {/*Link to go back*/}
         <Link to="/" className={classes.link}>
           <Button variant="contained" className={classes.button}>
             Go Back
           </Button>
         </Link>
       </div>
-
+      {/*Bottom Padding div*/}
       <div className={classes.padding}></div>
     </div>
   );

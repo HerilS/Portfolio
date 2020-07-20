@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { animateScroll as scroll, scroller } from 'react-scroll';
+import { scroller } from 'react-scroll';
 import Typist from 'react-typist';
 import 'react-typist/dist/Typist.css';
 
@@ -148,8 +148,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const App = () => {
-  var Scroll = require('react-scroll');
-  var scroll = Scroll.animateScroll;
+  //Button that leads to contact page
   const sendMessage = () => {
     scroller.scrollTo('Contact', {
       duration: 1500,
@@ -161,6 +160,7 @@ const App = () => {
   const classes = useStyles();
   return (
     <div className={classes.landing}>
+      {/*Social Media Icons*/}
       <div className={classes.homeLogoContainer}>
         <a href="https://github.com/HerilS" target="_blank" rel="noopener noreferrer">
           <img src="img/Icons/github.svg" alt="Github" className={classes.homeLogo} />
@@ -172,15 +172,20 @@ const App = () => {
           <img src="img/Icons/linkedin.svg" alt="LinkedIn" className={classes.homeLogo} />
         </a>
       </div>
+
+      {/*Image*/}
       <div className={classes.homeImageContainer}>
-        <img src="img/Illustrations/home.svg" className={classes.homeImage} alt="homepage" />
+        <img src="img/Illustrations/home.svg" className={classes.homeImage} alt="Landing Panel Illustration" />
       </div>
+
+      {/*Text*/}
       <div className={classes.landingTextContainer}>
         <div className={classes.landingTopNameContainer}>
           <span className={classes.landingTopName}>Heril Saha.</span>
         </div>
         <div className={classes.homeTextContainer}>
           <div className={classes.homeText}>
+            {/*Typing Animation*/}
             <Typist
               cursor={{
                 show: true,
@@ -195,10 +200,12 @@ const App = () => {
               Heril Saha.
             </Typist>
           </div>
+          {/*Button that leads to contact panel*/}
           <Button variant="contained" className={classes.homeButton} onClick={sendMessage}>
             Send Message
           </Button>
         </div>
+        {/*Location Text*/}
         <div className={classes.homeLocated}>
           <span>
             Located in

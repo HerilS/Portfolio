@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import DoneOutlineRoundedIcon from '@material-ui/icons/DoneOutlineRounded';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Element } from 'react-scroll';
 import { useIntersection } from 'react-use';
 import { gsap } from 'gsap';
-
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -115,6 +112,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelSeven() {
   const classes = useStyles();
+
+  // States for form fields and error handling
   const [name, setName] = useState('');
   const [isNameError, setIsNameError] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -127,6 +126,7 @@ export default function PanelSeven() {
   const [isParagraphError, setIsParagraphError] = useState(false);
   const [paragraphError, setParagraphError] = useState('');
 
+  // Setting the form field to state
   const onNameChange = (event: any) => {
     setName(event.target.value);
   };
@@ -139,6 +139,7 @@ export default function PanelSeven() {
     setParagraph(event.target.value);
   };
 
+  // On submit function function for error handling
   const onSubmit = (e: any) => {
     setIsEmailError(false);
     setIsNameError(false);
@@ -148,8 +149,9 @@ export default function PanelSeven() {
       setIsNameError(true);
       setNameError('Required Field');
     }
+    // Regex expression to know if email is invalid
     if (
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email,
       ) !== true
     ) {
@@ -164,6 +166,7 @@ export default function PanelSeven() {
     }
   };
 
+  // Defining ref for intersection observer
   const sectionRef6 = useRef(null);
 
   const intersection = useIntersection(sectionRef6, {
@@ -173,6 +176,7 @@ export default function PanelSeven() {
   });
 
   useEffect(() => {
+    // Fade in animation when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -184,6 +188,7 @@ export default function PanelSeven() {
       });
     };
 
+    // Fade out animation when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -198,18 +203,28 @@ export default function PanelSeven() {
   }, [intersection]);
 
   return (
+    // Element that is scrolled to on button press in panel one
     <Element name="Contact">
+      {/*Defining Ref for intersection observer*/}
       <div ref={sectionRef6} className={classes.root}>
-        <img src="img/Leaves/WhiteLeaves.svg" className={classes.whiteLeaf} />
+        <img src="img/Leaves/WhiteLeaves.svg" alt="Leaves" className={classes.whiteLeaf} />
         <div className={classes.title}>
           <span>
+            {/*Title*/}
             <div className="fadeIn6">Contact</div>
           </span>
         </div>
         <div className={classes.formContainer}>
-          <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/thankyou">
-            <input type="hidden" name="bot-field" />
+          <form
+            name="contact"
+            method="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/thankyou"
+          >
+            <input type="hidden" name="bot-field" /> {/*Hidden Input for bot detection*/}
             <div className="fadeIn6">
+              {/*Text field for Name*/}
               <TextField
                 InputProps={{
                   style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
@@ -229,6 +244,7 @@ export default function PanelSeven() {
               />
             </div>
             <div className="fadeIn6">
+              {/*Text field for Email*/}
               <TextField
                 InputProps={{
                   style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
@@ -247,6 +263,7 @@ export default function PanelSeven() {
               />
             </div>
             <div className="fadeIn6">
+              {/*Text field for Message*/}
               <TextField
                 InputProps={{
                   style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
@@ -266,9 +283,9 @@ export default function PanelSeven() {
                 variant="outlined"
               />
             </div>
-
             <div>
               <div className="fadeIn6">
+                {/*Submit Button*/}
                 <Button type="submit" className={classes.button} onClick={onSubmit}>
                   Submit
                 </Button>
@@ -278,7 +295,7 @@ export default function PanelSeven() {
         </div>
         <div className={classes.imageContainer}>
           <div className="fadeIn6">
-            <img src="img/Illustrations/contact.svg" className={classes.image} />
+            <img src="img/Illustrations/contact.svg" alt="Illustration" className={classes.image} />
           </div>
         </div>
       </div>

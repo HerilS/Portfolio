@@ -171,7 +171,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelFive() {
   const classes = useStyles();
-
+  // Ref for intersection observer
   const sectionRef4 = useRef(null);
 
   const intersection = useIntersection(sectionRef4, {
@@ -181,6 +181,7 @@ export default function PanelFive() {
   });
 
   useEffect(() => {
+    // Fade in animation when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -192,6 +193,7 @@ export default function PanelFive() {
       });
     };
 
+    // Fade out animation when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -207,19 +209,23 @@ export default function PanelFive() {
 
   return (
     <div className={classes.root}>
-      <img src="img/Leaves/Leaf3.svg" className={classes.leaf} />
+      <img src="img/Leaves/Leaf3.svg" alt="Leaf" className={classes.leaf} />
+      {/*Defining Ref for intersection observer*/}
       <div ref={sectionRef4} className={classes.paddingContainer}>
         <div className={classes.title}>
           <div className="fadeIn4">
+            {/*Main Title*/}
             <span>City Youth Council</span>
           </div>
         </div>
         <div className={classes.planningStrategist}>
           <div className={classes.planningStrategistTitle}>
             <div className="fadeIn4">
+              {/*Sub title*/}
               <span>Planning Strategist</span>
             </div>
           </div>
+          {/*Planning Strategist List*/}
           <ul className={classes.planningStrategistList}>
             <div className="fadeIn4">
               <li className={classes.planningStrategistItem}>
@@ -248,16 +254,22 @@ export default function PanelFive() {
 
         <div className={classes.smallImage1Container}>
           <div className="fadeIn4">
-            <img src="img/Illustrations/smallVar1.svg" className={classes.smallImage1} />
+            <img
+              src="img/Illustrations/smallVar1.svg"
+              alt="Small Illustration"
+              className={classes.smallImage1}
+            />
           </div>
         </div>
 
         <div className={classes.YAL}>
           <div className={classes.YALTitle}>
             <div className="fadeIn4">
+              {/*Sub title*/}
               <span>Youth-at-Large Member</span>
             </div>
           </div>
+          {/*YAL List*/}
           <ul className={classes.YALList}>
             <div className="fadeIn4">
               <li className={classes.YALItem}>
@@ -288,13 +300,13 @@ export default function PanelFive() {
         </div>
         <div className={classes.smallImage2Container}>
           <div className="fadeIn4">
-            <img src="img/Illustrations/smallVar2.svg" className={classes.smallImage2} />
+            <img src="img/Illustrations/smallVar2.svg" alt="Small Illustration" className={classes.smallImage2} />
           </div>
         </div>
 
         <div className={classes.imageContainer}>
           <div className="fadeIn4">
-            <img src="img/Illustrations/Variations.svg" className={classes.bigImage} />
+            <img src="img/Illustrations/Variations.svg" alt="Big Illustrations" className={classes.bigImage} />
           </div>
         </div>
       </div>

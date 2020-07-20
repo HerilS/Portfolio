@@ -92,6 +92,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export default function PanelFour() {
   const classes = useStyles();
+
+  // Ref for intersection observer
   const sectionRef3 = useRef(null);
 
   const intersection = useIntersection(sectionRef3, {
@@ -101,6 +103,7 @@ export default function PanelFour() {
   });
 
   useEffect(() => {
+    // Fade in when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -112,6 +115,7 @@ export default function PanelFour() {
       });
     };
 
+    // Fade out when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -126,20 +130,23 @@ export default function PanelFour() {
   }, [intersection]);
 
   return (
+    //Defined Section Ref
     <div ref={sectionRef3} className={classes.body}>
-      <img src="/img/Extra/lamps.svg" className={classes.image} />
-      <div  className={classes.text}>
+      <img src="/img/Extra/lamps.svg" alt="Lamp" className={classes.image} />
+      <div className={classes.text}>
         <div className={classes.title}>
+          {/*Title*/}
           <div className="fadeIn3">Developed For Tax Mechanic</div>
         </div>
         <div className={classes.paragraph}>
           <div className="fadeIn3">
+            {/*Paragraph*/}
             Managed, Designed, Planned, and Fully Developed a Website For a Tax Consultation Company
           </div>
         </div>
       </div>
-      <img src="/img/Leaves/Plant.svg" className={classes.image2} />
-      <img src="/img/Leaves/PlantRight.svg" className={classes.image3} />
+      <img src="/img/Leaves/Plant.svg" alt="Plant" className={classes.image2} />
+      <img src="/img/Leaves/PlantRight.svg" alt="Plant" className={classes.image3} />
     </div>
   );
 }

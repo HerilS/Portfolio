@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 export default function PanelThree() {
+  // Ref for intersection observer
   const sectionRef2 = useRef(null);
 
   const intersection = useIntersection(sectionRef2, {
@@ -84,6 +85,7 @@ export default function PanelThree() {
   });
 
   useEffect(() => {
+    // Fade in animation when scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -95,6 +97,7 @@ export default function PanelThree() {
       });
     };
 
+    // Fade out animation when scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -111,11 +114,14 @@ export default function PanelThree() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      {/*Defining Ref for intersection observer*/}
       <div ref={sectionRef2} className={classes.skillBody}>
         <div className="fadeIn2">
+          {/*Title*/}
           <span className={classes.title}>Skills</span>
         </div>
 
+        {/*Skills List*/}
         <div className={classes.skillItemContainer}>
           <div className="fadeIn2">
             <DoneOutlineRoundedIcon className={classes.icon} />
@@ -147,9 +153,11 @@ export default function PanelThree() {
           </div>
         </div>
       </div>
+
+      {/*Illustration*/}
       <div className={classes.imageContainer}>
         <div className="fadeIn2">
-          <img src="img/Illustrations/skills.svg" className={classes.image} />
+          <img src="img/Illustrations/skills.svg" alt="Illustration" className={classes.image} />
         </div>
       </div>
     </div>

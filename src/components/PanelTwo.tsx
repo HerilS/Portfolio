@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import ScrollAnimation from 'react-animate-on-scroll';
-import Typist from 'react-typist';
 import { useIntersection } from 'react-use';
 import { gsap } from 'gsap';
 
@@ -87,6 +85,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function PanelTwo() {
+  // Ref for Intersection Observer
   const sectionRef1 = useRef(null);
 
   const intersection = useIntersection(sectionRef1, {
@@ -95,7 +94,9 @@ export default function PanelTwo() {
     threshold: 0.5,
   });
 
+  // GSAP Animation on Intersection Observer View
   useEffect(() => {
+    // Fading In animation on Scroll in
     const fadeIn = (element: any) => {
       gsap.to(element, 1, {
         opacity: 1,
@@ -107,6 +108,7 @@ export default function PanelTwo() {
       });
     };
 
+    // Fading In animation on Scroll out
     const fadeOut = (element: any) => {
       gsap.to(element, 1, {
         opacity: 0,
@@ -114,6 +116,7 @@ export default function PanelTwo() {
         ease: 'power3.out',
       });
     };
+
     intersection && intersection.intersectionRatio < 0.5
       ? // Not Reached
         fadeOut('.fadeIn1')
@@ -123,19 +126,27 @@ export default function PanelTwo() {
   const classes = useStyles();
   return (
     <div className={classes.body}>
-      <img src="/img/Leaves/LeafCollection2.svg" className={classes.image} />
+      {/*Image on left*/}
+      <img src="/img/Leaves/LeafCollection2.svg" alt="Leaf" className={classes.image} />
+
+      {/*Defining Ref for intersection observer*/}
       <div ref={sectionRef1} className={classes.text}>
         <div className={classes.title}>
+          {/*Title*/}
           <div className="fadeIn1">Creator of Nixode</div>
         </div>
         <div className={classes.paragraph}>
           <div className="fadeIn1">
-            A Website That Tracks Cryptocurrency Prices and Allows Advanced Comparisons Between Them
+            {/*Paragraph Underneath*/}A Website That Tracks Cryptocurrency Prices and Allows
+            Advanced Comparisons Between Them
           </div>
         </div>
       </div>
-      <img src="/img/Leaves/LeafCollection1.svg" className={classes.image2} />
-      <img src="/img/Leaves/LeafCollection3.svg" className={classes.image3} />
+      {/*Image on right*/}
+      <img src="/img/Leaves/LeafCollection1.svg" alt="Leaf" className={classes.image2} />
+
+      {/*Mobile Image*/}
+      <img src="/img/Leaves/LeafCollection3.svg" alt="Leaf" className={classes.image3} />
     </div>
   );
 }
