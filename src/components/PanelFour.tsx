@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { createStyles, makeStyles, Theme, createGenerateClassName } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
 import { gsap } from 'gsap';
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     text: {
       textAlign: 'center',
-      paddingTop: '8rem',
+      paddingTop: '10rem',
       [theme.breakpoints.down(1285)]: {
         textAlign: 'left',
       },
