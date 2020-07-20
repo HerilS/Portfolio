@@ -15,6 +15,7 @@ interface Data {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     creationBody: {
+      overflow: 'auto',
       backgroundColor: 'rgb(209, 188, 188, 0.61)',
       zIndex: 0,
       paddingBottom: '3rem',
@@ -124,7 +125,7 @@ export default function PanelSix() {
   const intersection = useIntersection(sectionRef5, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.2,
+    threshold: 0.1,
   });
 
   useEffect(() => {
@@ -148,7 +149,7 @@ export default function PanelSix() {
         ease: 'power3.out',
       });
     };
-    intersection && intersection.intersectionRatio < 0.2
+    intersection && intersection.intersectionRatio < 0.1
       ? // Not Reached
         fadeOut('.fadeIn5')
       : fadeIn('.fadeIn5');

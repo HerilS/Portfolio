@@ -19,6 +19,10 @@ export default () => (
         name="description"
         content="Full Stack Developer and UX/UI Designer based in Alberta."
       />
+      <link
+        rel="stylesheet"
+        href="https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
+      ></link>
     </Helmet>
     <PanelOne />
     <PanelTwo />

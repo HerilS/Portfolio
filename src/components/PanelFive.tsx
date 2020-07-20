@@ -5,7 +5,9 @@ import { gsap } from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
+    root: {
+      overflow: 'auto',
+    },
     paddingContainer: {
       paddingTop: '3rem',
       paddingBottom: '3rem',
@@ -177,7 +179,7 @@ export default function PanelFive() {
   const intersection = useIntersection(sectionRef4, {
     root: null,
     rootMargin: '0px',
-    threshold: 0.3,
+    threshold: 0.1,
   });
 
   useEffect(() => {
@@ -201,7 +203,7 @@ export default function PanelFive() {
         ease: 'power3.out',
       });
     };
-    intersection && intersection.intersectionRatio < 0.3
+    intersection && intersection.intersectionRatio < 0.1
       ? // Not Reached
         fadeOut('.fadeIn4')
       : fadeIn('.fadeIn4');

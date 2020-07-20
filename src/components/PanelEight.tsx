@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: '2.5rem',
       paddingBottom: '2rem',
       backgroundColor: 'rgb(209, 188, 188, 0.61)',
+      overflow: 'hidden',
     },
     iconContainer: {
       display: 'flex',

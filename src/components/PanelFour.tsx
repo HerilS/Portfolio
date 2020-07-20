@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     body: {
       position: 'relative',
-      overflow: 'hidden',
+      overflow: 'auto',
       backgroundColor: 'rgb(209, 188, 188, 0.61)',
       width: '100%',
       display: 'flex',
