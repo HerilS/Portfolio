@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/success.tsx"],"names":["success"],"mappings":"2FAAA,wEAEe,SAASA,IACpB,OACI","file":"component---src-pages-success-tsx-665637cb53a4672d2f40.js","sourcesContent":["import React from 'react'\n\nexport default function success() {\n    return (\n        <div>\n            thank you\n        </div>\n    )\n}\n"],"sourceRoot":""}

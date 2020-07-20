@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Element } from 'react-scroll';
 import { useIntersection } from 'react-use';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import Button from '@material-ui/core/Button';
 
@@ -207,7 +207,7 @@ export default function PanelSeven() {
           </span>
         </div>
         <div className={classes.formContainer}>
-          <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/thankyou">
             <input type="hidden" name="bot-field" />
             <div className="fadeIn6">
               <TextField

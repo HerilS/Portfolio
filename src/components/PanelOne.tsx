@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { animateScroll as scroll, scroller } from 'react-scroll';
 import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -156,7 +157,7 @@ const App = () => {
       smooth: true,
     });
   };
-  
+
   const classes = useStyles();
   return (
     <div className={classes.landing}>

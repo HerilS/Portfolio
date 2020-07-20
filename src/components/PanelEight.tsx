@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useIntersection } from 'react-use';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 export default () => (
   <React.Fragment>
     <Helmet>
-      <meta charSet="utf-8" />
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <html lang="en" />
       <title>Heril Saha's Portfolio</title>
       <meta

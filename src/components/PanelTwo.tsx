@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Typist from 'react-typist';
 import { useIntersection } from 'react-use';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -92,42 +92,44 @@ export default function PanelTwo() {
   const intersection = useIntersection(sectionRef1, {
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: 0.5,
   });
 
-  const fadeIn = (element: any) => {
-    gsap.to(element, 1, {
-      opacity: 1,
-      y: -80,
-      ease: 'power3.out',
-      stagger: {
-        amount: 0,
-      },
-    });
-  };
+  useEffect(() => {
+    const fadeIn = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 1,
+        y: -80,
+        ease: 'power3.out',
+        stagger: {
+          amount: 0,
+        },
+      });
+    };
 
-  const fadeOut = (element: any) => {
-    gsap.to(element, 1, {
-      opacity: 0,
-      y: -20,
-      ease: 'power3.out',
-    });
-  };
-  intersection && intersection.intersectionRatio < 1
-    ? // Not Reached
-      fadeOut('.fadeIn')
-    : fadeIn('.fadeIn');
+    const fadeOut = (element: any) => {
+      gsap.to(element, 1, {
+        opacity: 0,
+        y: -20,
+        ease: 'power3.out',
+      });
+    };
+    intersection && intersection.intersectionRatio < 0.5
+      ? // Not Reached
+        fadeOut('.fadeIn1')
+      : fadeIn('.fadeIn1');
+  }, [intersection]);
 
   const classes = useStyles();
   return (
-    <div ref={sectionRef1} className={classes.body}>
+    <div className={classes.body}>
       <img src="/img/Leaves/LeafCollection2.svg" className={classes.image} />
-      <div className={classes.text}>
+      <div ref={sectionRef1} className={classes.text}>
         <div className={classes.title}>
-          <div className="fadeIn">Creator of Nixode</div>
+          <div className="fadeIn1">Creator of Nixode</div>
         </div>
         <div className={classes.paragraph}>
-          <div className="fadeIn">
+          <div className="fadeIn1">
             A Website That Tracks Cryptocurrency Prices and Allows Advanced Comparisons Between Them
           </div>
         </div>

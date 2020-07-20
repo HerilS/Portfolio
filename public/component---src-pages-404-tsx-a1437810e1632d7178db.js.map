@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/404.tsx"],"names":[],"mappings":"6FAAA,gCAGe,qBACX,OACI","file":"component---src-pages-404-tsx-a1437810e1632d7178db.js","sourcesContent":["import React from 'react'\nimport { createStyles, makeStyles, Theme } from '@material-ui/core/styles';\n\nexport default () => {\n    return (\n        <h1>nope!</h1>\n    )\n}"],"sourceRoot":""}
