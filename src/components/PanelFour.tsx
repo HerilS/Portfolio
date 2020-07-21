@@ -156,7 +156,7 @@ export default function PanelFour() {
         <div className={classes.title}>
           {/*Title*/}
           <div className="fadeIn3">
-            Developed For{' '}
+            Contributed To{' '}
             <mark className={classes.underline}>
               <a className={classes.link} href="https://www.taxmechanic.ca">Tax Mechanic</a>
             </mark>
@@ -165,7 +165,7 @@ export default function PanelFour() {
         <div className={classes.paragraph}>
           <div className="fadeIn3">
             {/*Paragraph*/}
-            Managed, Designed, Planned, and Fully Developed a Website For a Tax Consultation Company
+            Helped Manage, Design, Plan, and Fully Develop a Website For a Tax Consultation Company
           </div>
         </div>
       </div>
