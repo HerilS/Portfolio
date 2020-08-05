@@ -210,8 +210,8 @@ const App = () => {
           <span>
             Located in
             <br />
-            Canada, <br />
-            Edmonton
+            Edmonton, <br />
+            Canada
           </span>
         </div>
       </div>
