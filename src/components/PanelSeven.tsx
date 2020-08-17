@@ -1,133 +1,171 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import { Element } from 'react-scroll';
-import { useIntersection } from 'react-use';
-import { gsap } from 'gsap';
-import Button from '@material-ui/core/Button';
+import React, { useState, useRef, useEffect } from "react";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import { Element } from "react-scroll";
+import { useIntersection } from "react-use";
+import { gsap } from "gsap";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      overflow: 'auto',
-      backgroundColor: '#D1BCBC',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
+      overflow: "auto",
+      backgroundColor: "#D1BCBC",
+      display: "grid",
+      gridTemplateColumns: "1fr 1fr",
     },
     button: {
-      fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'bold',
-      color: 'white',
-      padding: '0.7rem',
-      paddingLeft: '1.5rem',
-      paddingRight: '1.5rem',
-      display: 'block',
-      textTransform: 'none',
-      backgroundColor: 'rgb(47, 54, 118, 1)',
-      '&:hover': {
-        backgroundColor: 'rgb(47, 54, 118, 0.95)',
+      fontFamily: "Gilroy, sans-serif",
+      fontWeight: "bold",
+      color: "white",
+      padding: "0.7rem",
+      paddingLeft: "1.5rem",
+      paddingRight: "1.5rem",
+      display: "block",
+      textTransform: "none",
+      backgroundColor: "rgb(47, 54, 118, 1)",
+      "&:hover": {
+        backgroundColor: "rgb(47, 54, 118, 0.95)",
       },
     },
     textField: {
-      paddingBottom: '1.5rem',
-      display: 'block',
-      '& label.Mui-focused': {
-        color: '#2F3676',
-        fontFamily: 'Gilroy, sans-serif',
-        fontWeight: 'bold',
+      paddingBottom: "1.5rem",
+      display: "block",
+      "& label.Mui-focused": {
+        color: "#2F3676",
+        fontFamily: "Gilroy, sans-serif",
+        fontWeight: "bold",
       },
-      '& label': {
-        color: '#2F3676',
-        fontFamily: 'Gilroy, sans-serif',
-        fontWeight: 'bold',
+      "& label": {
+        color: "#2F3676",
+        fontFamily: "Gilroy, sans-serif",
+        fontWeight: "bold",
       },
-	'& .MuiInput-underline:before': {
-	borderBottomColor: '#2F3676',
-	},
-      '& .MuiInput-underline:after': {
-        borderBottomColor: '#2F3676',
+      "& .MuiInput-underline:before": {
+        borderBottomColor: "#2F3676",
       },
-      '& .MuiOutlinedInput-root': {
-        width: '29rem',
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "#2F3676",
+      },
+      "& .MuiOutlinedInput-root": {
+        width: "29rem",
         [theme.breakpoints.down(600)]: {
-          width: '20rem',
+          width: "20rem",
         },
-        '& fieldset': {
-          borderColor: '#2F3676',
-          borderWidth: '0.2rem',
+        "& fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
         },
-        '&:hover fieldset': {
-          borderColor: '#2F3676',
-          borderWidth: '0.2rem',
+        "&:hover fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
         },
-        '&.Mui-focused fieldset': {
-          borderColor: '#2F3676',
-          borderWidth: '0.2rem',
+        "&.Mui-focused fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
+        },
+      },
+    },
+    textFieldError: {
+      paddingBottom: "1.5rem",
+      display: "block",
+      "& label.Mui-focused": {
+        color: "#2F3676",
+        fontFamily: "Gilroy, sans-serif",
+        fontWeight: "bold",
+      },
+      "& label": {
+        color: "#2F3676",
+        fontFamily: "Gilroy, sans-serif",
+        fontWeight: "bold",
+      },
+      "& .MuiInput-underline:before": {
+        borderBottomColor: "#2F3676",
+      },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "#2F3676",
+      },
+      "& .MuiOutlinedInput-root": {
+        width: "29rem",
+        [theme.breakpoints.down(600)]: {
+          width: "20rem",
+        },
+        "& fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
+        },
+        "&:hover fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "#2F3676",
+          borderWidth: "0.2rem",
         },
       },
     },
     helperText: {
-      fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'bold',
+      fontFamily: "Gilroy, sans-serif",
+      fontWeight: "bold",
     },
     formContainer: {
-      margin: 'auto',
-      padding: '3rem',
+      margin: "auto",
+      padding: "3rem",
       [theme.breakpoints.down(1100)]: {
         padding: 0,
-        margin: 'auto',
-        gridColumnStart: '1',
-        gridColumnEnd: '3',
-        paddingTop: '3.5rem',
-        paddingBottom: '3.5rem',
+        margin: "auto",
+        gridColumnStart: "1",
+        gridColumnEnd: "3",
+        paddingTop: "3.5rem",
+        paddingBottom: "3.5rem",
       },
     },
     title: {
-      gridColumnStart: '1',
-      gridColumnEnd: '3',
-      textAlign: 'center',
-      paddingTop: '3rem',
-      fontFamily: 'Gilroy, sans-serif',
-      fontWeight: 'bold',
-      color: '#2F3676',
-      fontSize: '4rem',
+      gridColumnStart: "1",
+      gridColumnEnd: "3",
+      textAlign: "center",
+      paddingTop: "3rem",
+      fontFamily: "Gilroy, sans-serif",
+      fontWeight: "bold",
+      color: "#2F3676",
+      fontSize: "4rem",
       zIndex: 3,
     },
     image: {
-      width: '90%',
+      width: "90%",
       [theme.breakpoints.down(1100)]: {
-        display: 'none',
+        display: "none",
       },
     },
     imageContainer: {
-      margin: 'auto',
+      margin: "auto",
     },
     whiteLeaf: {
-      position: 'absolute',
-      transform: 'rotate(180deg)',
-      width: '9rem',
-      left: '1.5rem',
+      position: "absolute",
+      transform: "rotate(180deg)",
+      width: "9rem",
+      left: "1.5rem",
       [theme.breakpoints.down(600)]: {
-        opacity: '0.8',
+        opacity: "0.8",
       },
     },
-  }),
+  })
 );
 export default function PanelSeven() {
   const classes = useStyles();
 
   // States for form fields and error handling
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [isNameError, setIsNameError] = useState(false);
-  const [nameError, setNameError] = useState('');
+  const [nameError, setNameError] = useState("");
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isEmailError, setIsEmailError] = useState(false);
-  const [emailError, setEmailError] = useState('');
+  const [emailError, setEmailError] = useState("");
 
-  const [paragraph, setParagraph] = useState('');
+  const [paragraph, setParagraph] = useState("");
   const [isParagraphError, setIsParagraphError] = useState(false);
-  const [paragraphError, setParagraphError] = useState('');
+  const [paragraphError, setParagraphError] = useState("");
 
   // Setting the form field to state
   const onNameChange = (event: any) => {
@@ -147,25 +185,25 @@ export default function PanelSeven() {
     setIsEmailError(false);
     setIsNameError(false);
     setIsParagraphError(false);
-    if (name === '') {
+    if (name === "") {
       e.preventDefault();
       setIsNameError(true);
-      setNameError('Required Field');
+      setNameError("Required Field");
     }
     // Regex expression to know if email is invalid
     if (
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-        email,
+        email
       ) !== true
     ) {
       e.preventDefault();
       setIsEmailError(true);
-      setEmailError('Invalid Email');
+      setEmailError("Invalid Email");
     }
-    if (paragraph === '') {
+    if (paragraph === "") {
       e.preventDefault();
       setIsParagraphError(true);
-      setParagraphError('Required Field');
+      setParagraphError("Required Field");
     }
   };
 
@@ -174,7 +212,7 @@ export default function PanelSeven() {
 
   const intersection = useIntersection(sectionRef6, {
     root: null,
-    rootMargin: '0px',
+    rootMargin: "0px",
     threshold: 0.3,
   });
 
@@ -184,7 +222,7 @@ export default function PanelSeven() {
       gsap.to(element, 1, {
         opacity: 1,
         y: -0,
-        ease: 'power3.out',
+        ease: "power3.out",
         stagger: {
           amount: 0,
         },
@@ -196,13 +234,13 @@ export default function PanelSeven() {
       gsap.to(element, 1, {
         opacity: 0,
         y: -20,
-        ease: 'power3.out',
+        ease: "power3.out",
       });
     };
     intersection && intersection.intersectionRatio < 0.3
       ? // Not Reached
-        fadeOut('.fadeIn6')
-      : fadeIn('.fadeIn6');
+        fadeOut(".fadeIn6")
+      : fadeIn(".fadeIn6");
   }, [intersection]);
 
   return (
@@ -210,7 +248,11 @@ export default function PanelSeven() {
     <Element name="Contact">
       {/*Defining Ref for intersection observer*/}
       <div ref={sectionRef6} className={classes.root}>
-        <img src="img/Leaves/WhiteLeaves.svg" alt="Leaves" className={classes.whiteLeaf} />
+        <img
+          src="img/Leaves/WhiteLeaves.svg"
+          alt="Leaves"
+          className={classes.whiteLeaf}
+        />
         <div className={classes.title}>
           <span>
             {/*Title*/}
@@ -225,17 +267,22 @@ export default function PanelSeven() {
             data-netlify-honeypot="bot-field"
             action="/thankyou"
           >
-            <input type="hidden" name="bot-field" /> {/*Hidden Input for bot detection*/}
+            <input type="hidden" name="bot-field" />{" "}
+            {/*Hidden Input for bot detection*/}
             <div className="fadeIn6">
               {/*Text field for Name*/}
               <TextField
                 InputProps={{
-                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                  style: {
+                    fontFamily: "Gilroy, sans-serif",
+                    fontWeight: "bold",
+                    color: "black",
+                  },
                 }}
                 FormHelperTextProps={{
                   className: classes.helperText,
                 }}
-                className={classes.textField}
+                className={isNameError ? classes.textFieldError : classes.textField}
                 name="Name"
                 label="Name"
                 value={name}
@@ -250,12 +297,16 @@ export default function PanelSeven() {
               {/*Text field for Email*/}
               <TextField
                 InputProps={{
-                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                  style: {
+                    fontFamily: "Gilroy, sans-serif",
+                    fontWeight: "bold",
+                    color: "black",
+                  },
                 }}
                 FormHelperTextProps={{
                   className: classes.helperText,
                 }}
-                className={classes.textField}
+                className={isEmailError ? classes.textFieldError : classes.textField}
                 name="Email"
                 label="Email"
                 value={email}
@@ -269,14 +320,18 @@ export default function PanelSeven() {
               {/*Text field for Message*/}
               <TextField
                 InputProps={{
-                  style: { fontFamily: 'Gilroy, sans-serif', fontWeight: 'bold', color: 'black' },
+                  style: {
+                    fontFamily: "Gilroy, sans-serif",
+                    fontWeight: "bold",
+                    color: "black",
+                  },
                 }}
                 FormHelperTextProps={{
                   className: classes.helperText,
                 }}
                 multiline
                 rows={10}
-                className={classes.textField}
+                className={isParagraphError ? classes.textFieldError : classes.textField}
                 name="Message"
                 label="Message"
                 value={paragraph}
@@ -289,7 +344,11 @@ export default function PanelSeven() {
             <div>
               <div className="fadeIn6">
                 {/*Submit Button*/}
-                <Button type="submit" className={classes.button} onClick={onSubmit}>
+                <Button
+                  type="submit"
+                  className={classes.button}
+                  onClick={onSubmit}
+                >
                   Submit
                 </Button>
               </div>
@@ -298,7 +357,11 @@ export default function PanelSeven() {
         </div>
         <div className={classes.imageContainer}>
           <div className="fadeIn6">
-            <img src="img/Illustrations/contact.svg" alt="Illustration" className={classes.image} />
+            <img
+              src="img/Illustrations/contact.svg"
+              alt="Illustration"
+              className={classes.image}
+            />
           </div>
         </div>
       </div>
