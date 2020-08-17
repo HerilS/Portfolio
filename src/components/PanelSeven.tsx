@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
           borderColor: '#2F3676',
           borderWidth: '0.2rem',
         },
-        '&:hover fieldset': {
+        '&:focus fieldset': {
           borderColor: '#2F3676',
           borderWidth: '0.2rem',
         },
