@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme: Theme) =>
         fontFamily: 'Gilroy, sans-serif',
         fontWeight: 'bold',
       },
+	'& .MuiInput-underline:before': {
+	borderBottomColor: '#2F3676',
+	},
       '& .MuiInput-underline:after': {
         borderBottomColor: '#2F3676',
       },
@@ -53,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
           borderColor: '#2F3676',
           borderWidth: '0.2rem',
         },
-        '&:focus fieldset': {
+        '&:hover fieldset': {
           borderColor: '#2F3676',
           borderWidth: '0.2rem',
         },
